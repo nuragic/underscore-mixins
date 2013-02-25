@@ -3,28 +3,32 @@ define(['underscore'], function(_) {
 
   _.mixin({
 
-    squeeze: function squeeze(obj, result) {
+    squeeze: function (obj) {
 
-      var result = result || [];
+      function _squeeze(obj, result) {
 
-      for (var propName in obj) {
-        
-        var propValue = obj[propName];
+        for (var propName in obj) {
+          
+          var propValue = obj[propName];
 
-        if (propValue) {
-          if (_.isArray(propValue)) {
-            return squeeze(propValue, result);
-          }
-          if (_.isObject(propValue)) {
-            squeeze(_.flatten(propValue), result);
-          }
-          if (_.isString(propValue)) {
-            result.push(propValue);
+          if (propValue) {
+            if (_.isArray(propValue)) {
+              return _squeeze(propValue, result);
+            }
+            if (_.isObject(propValue)) {
+              _squeeze(_.flatten(propValue), result);
+            }
+            if (_.isString(propValue)) {
+              result.push(propValue);
+            }
           }
         }
+
+        return result;
       }
 
-      return result;
+      return _squeeze(obj, []);
+      
     }
 
   });
