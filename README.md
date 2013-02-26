@@ -1,18 +1,20 @@
 underscore-mixins
 =================
 
-A collection of underscore mixins.
+This is an open collection of underscore mixins*. Feel free to criticize/contribute.
 
-*squeeze* – or JSON flatten - 
-Returns an array with only the string values of the given object (any deep).
 
-Example usage: implementing a search method in a Backbone.Collection
+*_.squeeze* (AKA infinitely deep JSON extract) 
+---------
+
+**Problem:** Ahhw! I need to to filter a Backbone.Collection!
+
+**Solution:** You can easily implement a search method using _.squeeze + JS native String.search() like showed below.
 
 ```js
-//YourCollection.js
 Backbone.Collection.extend({
     
-  // ....
+  // …
   
   search: function (criteria) {
     
@@ -26,3 +28,6 @@ Backbone.Collection.extend({
 
 });
 ```
+
+
+*\*only one for now! XD*
