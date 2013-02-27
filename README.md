@@ -3,9 +3,9 @@ underscore-mixins
 
 This is an open collection of underscore mixins*. Feel free to criticize/contribute.
 
-
-*_.squeeze* (AKA infinitely deep JSON extract) 
----------
+*_.squeeze*
+----------
+(AKA JSON extract/flatten) - Walk over the given Object and returns an Array with only its string values.
 
 **Problem:** Ahhw! I need to to filter a Backbone.Collection!
 
