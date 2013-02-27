@@ -5,11 +5,11 @@ This is an open collection of underscore mixins*. Feel free to criticize/contrib
 
 *_.squeeze(object)*
 ----------
-(AKA extract/flatten) - Walk over the given Object and returns an Array with only its string values.
+(AKA extract/flatten) - Walks over the given Object and returns an Array with only its values. See the test for more details.
 
-**Problem:** Ahhw! I need to to filter a Backbone.Collection!
+**Example usage** 
 
-**Solution:** You can easily implement a search method using _.squeeze + JS native String.search() like showed below.
+You can easily implement a search method for your Backbone.Collection using *_.squeeze* as showed below:
 
 ```js
 Backbone.Collection.extend({
@@ -30,4 +30,4 @@ Backbone.Collection.extend({
 ```
 
 
-*\*only one for now! XD*
+*\*just one for now! :D*
