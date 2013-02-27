@@ -1,11 +1,13 @@
-//mixins.js
-define(['underscore'], function(_) {
+// Underscore mixins (AMD style)
+define(function(require) {
+
+  var _  = require('underscore');
 
   _.mixin({
 
     squeeze: function (obj) {
 
-      function _squeeze(obj, result) {
+      var _extract = function (obj, result) {
 
         for (var propName in obj) {
           
@@ -13,12 +15,10 @@ define(['underscore'], function(_) {
 
           if (propValue) {
             if (_.isArray(propValue)) {
-              return _squeeze(propValue, result);
-            }
-            if (_.isObject(propValue)) {
-              _squeeze(_.flatten(propValue), result);
-            }
-            if (_.isString(propValue)) {
+              _extract(propValue, result);
+            } else if (_.isObject(propValue)) {
+              _extract(_.flatten(propValue), result);
+            } else if (_.isString(propValue)) {
               result.push(propValue);
             }
           }
@@ -27,8 +27,7 @@ define(['underscore'], function(_) {
         return result;
       }
 
-      return _squeeze(obj, []);
-      
+      return _extract(obj, []);
     }
 
   });
