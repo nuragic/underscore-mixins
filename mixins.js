@@ -6,28 +6,21 @@ define(function(require) {
   _.mixin({
 
     squeeze: function (obj) {
-
-      var _extract = function (obj, result) {
-
-        for (var propName in obj) {
-          
-          var propValue = obj[propName];
-
-          if (propValue) {
-            if (_.isArray(propValue)) {
-              _extract(propValue, result);
-            } else if (_.isObject(propValue)) {
-              _extract(_.flatten(propValue), result);
-            } else if (_.isString(propValue)) {
-              result.push(propValue);
+      var extract = function (obj, result) {
+        _.each(obj, function(value, name) {
+          if (value) {
+            if (_.isArray(value)) {
+              extract(value, result);
+            } else if (_.isObject(value)) {
+              extract(_.flatten(value), result);
+            } else if (_.isString(value)) {
+              result.push(value);
             }
           }
-        }
-
+        })
         return result;
       }
-
-      return _extract(obj, []);
+      return extract(obj, []);
     }
 
   });
